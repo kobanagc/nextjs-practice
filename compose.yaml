@@ -1,0 +1,9 @@
+services:
+  front:
+    build: .
+    tty: true
+    ports:
+      - "3000:3000" # 開発用
+    volumes:
+      - ./app/myapp/nextjs-practice:/app # ./app/myapp/{プロジェクト名}:/app
+    command: yarn dev
