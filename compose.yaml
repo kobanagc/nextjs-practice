@@ -6,4 +6,10 @@ services:
       - "3000:3000" # 開発用
     volumes:
       - ./app/myapp/nextjs-practice:/app # ./app/myapp/{プロジェクト名}:/app
+    environment:
+      - WATCHPACK_POLLING=true
     command: yarn dev
+
+# 参考URL
+# https://zenn.dev/yuki_tu/articles/01c7963eeb2876
+# https://zenn.dev/temple_c_tech/articles/setup-next-on-docker
