@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000" # 開発用
     volumes:
-      - ./app/myapp/nextjs-practice:/app # ./app/myapp/{プロジェクト名}:/app
+      - ./app/nextjs-practice:/app # ./app/{プロジェクト名}:/app
     environment:
       - WATCHPACK_POLLING=true
     command: yarn dev
