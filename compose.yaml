@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000" # 開発用
     volumes:
-      - ./app:/app # ローカルディレクトリ/リモートディレクトリ
+      - ./:/app # ローカルディレクトリ/リモートディレクトリ
     environment:
       - WATCHPACK_POLLING=true # ホットリロード
     command: yarn dev
