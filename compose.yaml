@@ -5,9 +5,9 @@ services:
     ports:
       - "3000:3000" # 開発用
     volumes:
-      - ./app/nextjs-practice:/app # ./app/{プロジェクト名}:/app
+      - ./app:/app # ローカルディレクトリ/リモートディレクトリ
     environment:
-      - WATCHPACK_POLLING=true
+      - WATCHPACK_POLLING=true # ホットリロード
     command: yarn dev
 
 # 参考URL
