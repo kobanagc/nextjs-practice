@@ -1,14 +1,13 @@
 services:
   front:
     build: .
-    tty: true
+    image: nextjs-practice-front
     ports:
-      - "3000:3000" # 開発用
+      - '3000:3000'
     volumes:
-      - ./app:/app # ローカルディレクトリ/リモートディレクトリ(nextjs-practice/appをリモートのappにマウント)
-    environment:
-      - WATCHPACK_POLLING=true # ホットリロード
-    command: yarn dev
+      - .:/app
+      - /app/node_modules
+
 
 # 参考URL
 # https://zenn.dev/yuki_tu/articles/01c7963eeb2876

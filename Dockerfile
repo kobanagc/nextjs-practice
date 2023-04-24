@@ -1,7 +1,17 @@
 FROM node:16.14.2-alpine
-WORKDIR /app/
 
-CMD [ "yarn", "build" ]
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
+
 
 # リモートコンテナ接続
 # 左下を押下
