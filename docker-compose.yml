@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000" # 開発用
     volumes:
-      - ./:/app # ローカルディレクトリ/リモートディレクトリ
+      - ./app:/app # ローカルディレクトリ/リモートディレクトリ(nextjs-practice/appをリモートのappにマウント)
     environment:
       - WATCHPACK_POLLING=true # ホットリロード
     command: yarn dev
