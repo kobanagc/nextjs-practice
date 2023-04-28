@@ -9,7 +9,3 @@ services:
     volumes:
       - ./src:/app # ローカルディレクトリ:リモートディレクトリ
     command: yarn dev
-
-
-# 参考URL
-# https://zenn.dev/temple_c_tech/articles/setup-next-on-docker
