@@ -4,7 +4,7 @@ services:
       context: .
     tty: true
     volumes:
-      - ./src:/app
+      - ./src/src:/app
     command: sh -c "npm run dev"
 
 
