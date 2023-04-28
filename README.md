@@ -1,11 +1,11 @@
 # How to start with Dev Containers
-1. イメージビルド
+1. Image-building
   docker-compose build
 
-2. パッケージインストール(初回または、新たにパッケージが導入された時のみ)
+2. Package installation (only the first time or when a new package is installed)
   docker compose run --rm front yarn install --frozen-lockfile
 
-3. コンテナ起動
+3. Container Start
   docker-compose up -d
 
 # Reference
