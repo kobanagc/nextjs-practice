@@ -1,11 +1,14 @@
+version: "3"
 services:
-  app:
-    build:
-      context: .
+  front:
+    build: .
     tty: true
+    ports:
+      - "3000:3000" # 開発用
+      - "4000:4000" # 本番用
     volumes:
-      - ./src/src:/app
-    command: sh -c "npm run dev"
+      - ./src:/app # ローカルディレクトリ:リモートディレクトリ
+    command: yarn dev
 
 
 # 参考URL

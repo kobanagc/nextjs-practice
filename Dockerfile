@@ -1,3 +1,4 @@
-FROM node:lts-buster-slim
+FROM node:16.14.2-alpine
+WORKDIR /app/
 
-WORKDIR /app
+CMD [ "yarn", "build" ]
