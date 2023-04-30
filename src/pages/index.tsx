@@ -4,6 +4,7 @@ import styles from '@/styles/Home.module.css'
 import { Logo } from '@/components/Logo'
 import Links from '@/components/Links'
 import { MainImage } from '@/components/MainImage'
+import { Path } from '@/components/Path'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +19,7 @@ export default function Home() {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
-          </p>
+          <Path page="index"/>
           <Logo />
         </div>
         <MainImage />
