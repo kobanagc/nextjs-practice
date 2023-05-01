@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import { Logo } from '@/components/Logo'
-import Links from '@/components/Links'
+import { Links } from '@/components/Links'
 import { MainImage } from '@/components/MainImage'
 import { Path } from '@/components/Path'
 
