@@ -1,11 +1,14 @@
 import Head from 'next/head'
 import { Main } from '@/components/Main'
 import { Header } from '@/components/Header'
+import { useCallback } from 'react'
 
 const foo = "hoge"
 
 export default function Home() {
-  const handleClick = () => alert(foo)
+const handleClick = useCallback(()=> { {/* useCallbackを使うとfunctionが読み込まれてもhandleClickは読み込まれなくなる*/}
+    alert("クリック！！")
+  },[])
   return (
     <>
       <Head>
