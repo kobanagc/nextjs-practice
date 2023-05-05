@@ -4,9 +4,10 @@ import { Header } from '@/components/Header'
 import { useCallback, useEffect, useState } from 'react'
 
 export default function Home() {
-  const [count, setCount] = useState(0)
-  const [text, setText] = useState("")
-  const [isShow, setIsShow] = useState(true)
+  const [count, setCount] = useState<number>(0)
+  const [text, setText] = useState<string>("")
+  const [isShow, setIsShow] = useState<boolean>(true)
+  const [array, setArray] = useState<string[]>([])
 
   useEffect(() => {
     // DOMを直接操作するのはReactでは原則NGだが今回は背景色を変える程度なので下記で実装。
@@ -20,7 +21,7 @@ export default function Home() {
   const handleClick = useCallback(() => {
     console.log(count)
     if (count < 10) {
-      setCount((count) => count + 1) // setCountの引数はcount + 1ではなく関数を渡す。じゃないと、前のcountの状態を引き継いだことにならない
+      setCount((prevCount) => prevCount + 1) // setCountの引数はcount + 1ではなく関数を渡す。じゃないと、前のcountの状態を引き継いだことにならない。また前回の値だと分かりやすくするためにcountではなくprevcountと命名。
     }
   }
   , [count])
@@ -34,8 +35,19 @@ export default function Home() {
   }, [])
 
   const handleDisplay = useCallback(()=> {
-    setIsShow((isShow) => !isShow)
+    setIsShow((prevIsShow) => !prevIsShow)
   }, [])
+
+  const handleAdd = useCallback(() => {
+    setArray((prevArray: string[])=> {
+      if (prevArray.some(item => item === text)){
+        alert("同じ要素がすでに存在しています。")
+        return prevArray
+      }
+      const newArray = [...prevArray, text]
+      return newArray
+    })
+  }, [text])
 
   return (
     <>
@@ -47,6 +59,12 @@ export default function Home() {
       <button onClick={handleClick}>ボタン</button>
       <button onClick={handleDisplay}>{isShow? "カウンターを非表示" : "カウンターを表示"}</button>
       <input type="text" value={text} onChange={handleChange}/> {/* valueに値をセットするのを忘れずに */}
+      <button onClick={handleAdd}>追加</button>
+      <ul>
+        {array.map((item)=>{
+          return(<li key={item}>{item}</li>)
+        })}
+      </ul>
       <Main page="index"/>
     </>
   )
