@@ -1,8 +1,15 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useCounter } from '@/hooks/useCounter'
+import { useTodoList } from '@/hooks/useTodoList'
+import { useBgNavy } from '@/hooks/useBgNavy'
 
 export default function App({ Component, pageProps }: AppProps) {
+  const counter = useCounter() // useCounterの中身は{count, isShow, handleClick, handleDisplay}
+  const todoList = useTodoList() // useTodoListの中身は{text, array, handleChange, handleAdd}
+  useBgNavy()
+
   return (
     <>
       <Head>
@@ -10,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Component {...pageProps} {...counter} {...todoList} /> {/* count={count} isShow={isShow}、、、とするのは冗長なのでスプレッド構文を使う */}
     </>
   )
 }

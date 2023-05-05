@@ -1,14 +1,21 @@
 import Head from 'next/head'
 import { Main } from '@/components/Main'
 import { Header } from '@/components/Header'
-import { useBgNavy } from '@/hooks/useBgNavy'
-import { useCounter } from '@/hooks/useCounter'
-import { useTodoList } from '@/hooks/useTodoList'
+import type { CounterReturnType, TodoListReturnType } from '@/types'
 
-export default function Home() {
-  const {count, isShow, handleClick, handleDisplay} = useCounter()
-  const {text, array, handleChange, handleAdd} = useTodoList()
-  useBgNavy()
+type HomeProps = CounterReturnType & TodoListReturnType;
+
+export default function Home(props: HomeProps) { //aboutとは異なり、一度propsで受け取り、内部でpropsから分割代入する
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleChange,
+    handleAdd,
+  } = props
 
   return (
     <>
