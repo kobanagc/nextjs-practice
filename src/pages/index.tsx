@@ -29,7 +29,7 @@ export default function Home(props: HomeProps) { //aboutとは異なり、一度
       <input type="text" value={text} onChange={handleChange}/> {/* valueに値をセットするのを忘れずに */}
       <button onClick={handleAdd}>追加</button>
       <ol> {/* カスタムフックスの練習として敢えてolタグにしaboutページと差別化。 */}
-        {array.map((item: string)=>{
+        {array.map((item)=>{
           return(<li key={item}>{item}</li>)
         })}
       </ol>
