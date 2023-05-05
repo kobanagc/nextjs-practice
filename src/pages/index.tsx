@@ -40,11 +40,11 @@ export default function Home() {
 
   const handleAdd = useCallback(() => {
     setArray((prevArray: string[])=> {
-      if (prevArray.some(item => item === text)){
+      if (prevArray.some(item => item === text)){ //someは配列の中に条件に当てはまるものがあるか探すメソッド
         alert("同じ要素がすでに存在しています。")
         return prevArray
       }
-      const newArray = [...prevArray, text]
+      const newArray = [...prevArray, text] //pushメソッドなどの破壊的メソッドはNG。スプレッド構文で対応。
       return newArray
     })
   }, [text])
