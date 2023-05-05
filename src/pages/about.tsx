@@ -5,7 +5,17 @@ import type { CounterReturnType, TodoListReturnType } from '@/types';
 
 type HomeProps = CounterReturnType & TodoListReturnType;
 
+export default function About({ //indexとは異なり引数にそのまま分割代入する
+  count,
+  isShow,
+  handleClick,
+  handleDisplay,
+  text,
+  array,
+  handleChange,
+  handleAdd,
 }: HomeProps) {
+
   return (
     <>
       <Head>

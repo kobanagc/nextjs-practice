@@ -6,6 +6,16 @@ import type { CounterReturnType, TodoListReturnType } from '@/types'
 type HomeProps = CounterReturnType & TodoListReturnType;
 
 export default function Home(props: HomeProps) { //aboutとは異なり、一度propsで受け取り、内部でpropsから分割代入する
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleChange,
+    handleAdd,
+  } = props
 
   return (
     <>
