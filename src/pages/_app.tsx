@@ -3,12 +3,12 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useCounter } from '@/hooks/useCounter'
 import { useTodoList } from '@/hooks/useTodoList'
-import { useBgNavy } from '@/hooks/useBgNavy'
+import { useBgColor } from '@/hooks/useBgColor'
 
 export default function App({ Component, pageProps }: AppProps) {
   const counter = useCounter() // useCounterの中身は{count, isShow, handleClick, handleDisplay}
   const todoList = useTodoList() // useTodoListの中身は{text, array, handleChange, handleAdd}
-  useBgNavy()
+  useBgColor()
 
   return (
     <>
