@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import styles from './MainImage.module.css'
 
-export function MainImage() {
+const MainImage = () => {
   return (
     <div className={styles.center}>
       <Image
@@ -15,3 +15,5 @@ export function MainImage() {
     </div>
   )
 }
+
+export default MainImage

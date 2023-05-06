@@ -1,9 +1,9 @@
 import { Inter } from 'next/font/google'
 import styles from './Main.module.css'
-import { Logo } from '@/components/Logo'
-import { Links } from '@/components/Links'
-import { MainImage } from '@/components/MainImage'
-import { Path } from '@/components/Path'
+import Logo from '@/components/Logo'
+import Links from '@/components/Links'
+import MainImage from '@/components/MainImage'
+import Path from '@/components/Path'
 import { useCallback, useState } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -36,7 +36,7 @@ const ITEMS = [
   }
 ]
 
-export function Main(props: Props) {
+const Main = (props: Props) => {
   const [items, setItems] = useState(ITEMS)
   const handleReduce = useCallback(()=>{
     setItems((prevItems) => {
@@ -60,3 +60,5 @@ export function Main(props: Props) {
     </>
   )
 }
+
+export default Main

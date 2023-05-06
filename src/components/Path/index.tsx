@@ -4,7 +4,7 @@ interface Props {
 }
 
 
-export function Path(props: Props) {
+const Path = (props: Props) => {
   return (
     <p>
       Get started by editing&nbsp;
@@ -12,3 +12,5 @@ export function Path(props: Props) {
     </p>
   )
 }
+
+export default Path

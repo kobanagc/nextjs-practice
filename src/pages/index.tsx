@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { Main } from '@/components/Main'
-import { Header } from '@/components/Header'
+import Main from '@/components/Main'
+import Header from '@/components/Header'
 import type { CounterReturnType, TodoListReturnType } from '@/types'
 
 type HomeProps = CounterReturnType & TodoListReturnType;

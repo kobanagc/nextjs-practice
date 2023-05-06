@@ -5,7 +5,7 @@ import { useCounter } from '@/hooks/useCounter'
 import { useTodoList } from '@/hooks/useTodoList'
 import { useBgColor } from '@/hooks/useBgColor'
 
-export default function App({ Component, pageProps }: AppProps) {
+const App = ({ Component, pageProps }: AppProps) => {
   const counter = useCounter() // useCounterの中身は{count, isShow, handleClick, handleDisplay}
   const todoList = useTodoList() // useTodoListの中身は{text, array, handleChange, handleAdd}
   useBgColor()
@@ -21,3 +21,5 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+export default App

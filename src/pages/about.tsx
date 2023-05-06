@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import { Main } from '@/components/Main'
-import { Header } from '@/components/Header'
+import Main from '@/components/Main'
+import Header from '@/components/Header'
 import type { CounterReturnType, TodoListReturnType } from '@/types';
 
 type HomeProps = CounterReturnType & TodoListReturnType;
 
-export default function About({ //indexとは異なり引数にそのまま分割代入する
+const About = ({ //indexとは異なり引数にそのまま分割代入する。また、引数はpropsにしておき、tsx内でprops.doubleCountなどで呼び出すこともできる。
   doubleCount,
   isShow,
   handleClick,
@@ -14,7 +14,7 @@ export default function About({ //indexとは異なり引数にそのまま分�
   array,
   handleChange,
   handleAdd,
-}: HomeProps) {
+}: HomeProps) => {
 
   return (
     <>
@@ -36,3 +36,5 @@ export default function About({ //indexとは異なり引数にそのまま分�
     </>
   )
 }
+
+export default About
