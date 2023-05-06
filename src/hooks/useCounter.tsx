@@ -1,10 +1,12 @@
-import { useState, useCallback } from "react"
+import { useState, useCallback, useMemo } from "react"
 
 export const useCounter = () =>{
   const [count, setCount] = useState<number>(0)
   const [isShow, setIsShow] = useState<boolean>(true)
+  const doubleCount = useMemo(() => {
+    return count * 2 // ここはsetCount(count * 2)だと無限レンダリングが発生してしまう。
+  }, [count])
   const handleClick = useCallback(() => {
-    console.log(count)
     if (count < 10) {
       setCount((prevCount) => prevCount + 1) // setCountの引数はcount + 1ではなく関数を渡す。じゃないと、前のcountの状態を引き継いだことにならない。また前回の値だと分かりやすくするためにcountではなくprevcountと命名。
     }
@@ -15,7 +17,7 @@ export const useCounter = () =>{
     setIsShow((prevIsShow) => !prevIsShow)
   }, [])
 
-  return {count, isShow, handleClick, handleDisplay} //setCountやsetIsShowはこのuseCounterフックス内でしか使わないのでreturnしなくてよい。
+  return {count, isShow, doubleCount, handleClick, handleDisplay} //setCountやsetIsShowはこのuseCounterフックス内でしか使わないのでreturnしなくてよい。
 }
 
 // カスタムフックスとコンポーネントの使い分けは、処理とUIを切り離したいかどうか。
