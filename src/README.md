@@ -1,38 +1,200 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ブランチ毎の補足
 
-## Getting Started
+## #1
+- Next.jsの特徴
+- Vercelと連携方法
 
-First, run the development server:
+#### 補足
+<br>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## #2
+- コンポーネントとは
+- コンポーネントの使い方
+  - フッターのコンポーネント化
+  - 4つのリンクアイテムのコンポーネント化
+- Gitmoji
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### 補足
+- pages配下の名前がそのままURLになる
+- 一般的にコンポーネントはpagesディレクトリと同じ階層にcomponentsを作成し、その中に展開していく。
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+<br>
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## #3
+- Props
+  - Get started...の部分をコンポーネント化
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+#### 補足
+- Reactフラグメントを使うよりdivを使う方が、スタイリングが壊れにくい
+- text-transform: capitalizeで大文字化できる。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<br>
 
-## Learn More
+## #4
+- export default
+  - pages/index.ts以外のページやコンポーネントのexport default functionを export functionに変更。
+- Props
+  - コンポーネントや関数も渡せる
+  - コンポーネントの開始タグと終了タグの間にコンポーネントを書くと、Childrenとして渡せる
+- メイン部分のコンポーネント化
 
-To learn more about Next.js, take a look at the following resources:
+#### 補足
+- pages/index.ts以外のページやコンポーネントのexport default functionは export functionの方がよい。
+- propsでboolean={true}を定義するときはbooleanのみで省略可能。
+- コンポーネントをpropsで渡すか、Childrenとして渡すかは記述量で決める
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## #5
+- CSS Modules
+  - コンポーネント毎にCSSを切り分け
 
-## Deploy on Vercel
+#### 補足
+- CSSのファイル名対応するコンポーネント名は必ずしも揃える必要はない
+- app全体のスタイリングはglobal.css
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<br>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## #6
+- Linkコンポーネント
+  - ページを行き来するリンク（Header）コンポーネントを作成
+
+#### 補足
+- Linkコンポーネントではなくaタグを使ってしまうと、ページ内の全ての要素が読み込まれるので処理が遅くなる。またLinkコンポーネントはPrefetch機能がある。
+
+<br>
+
+## #7
+- 繰り返し処理
+  - 4つのリンクをmapで書き換え
+- next, react, react-domのバージョンアップ
+  - yarn add next react react-dom
+
+#### 補足
+- 繰り返し処理をする場合はkeyを指定する必要あり
+- HTML Entities（&~;）はUnicode（u0000）で書き換え可能
+
+<br>
+
+## #8
+- リファクタリング
+  - tsをtsxに変更
+  - components内をコンポーネント毎にディレクトリを分ける
+  - importの相対パスを絶対パスにする
+  - Headを_appに移植し共通化
+
+#### 補足
+- vsCodeが拡張子を見て補完機能が働く
+- js(ts)においてindexはディレクトリ名を参照したときに勝手に見てくれる
+- jsconfig.jsonファイルでルートディレクトリをどこにするか指定できる
+- VSコードの補完機能で自動importをする際に絶対パスに指定する場合はvsコードの設定で変更可能
+
+<br>
+
+## #9
+- onClickイベント
+
+#### 補足
+- イベント処理はtsxに書くのは見通しが悪くなるのでNG。コンポーネントの外と中で定義する方法があるが、引数が必要ない場合は外に書くのがいい。中に書くとコンポーネントがレンダリングされるたびに関数が再生成されるのでパフォーマンスが悪くなる。その場合はuseCallbackを使うとコンポーネントが再レンダリングされても関数は再生成されない。
+
+<br>
+
+## #10
+- useEffect
+  - indexの背景色を変更
+#### 補足
+- useEffect
+  - returnより上にマウント時の処理、return内にアンマウント時の処理
+  - 第二引数の配列に監視対象の変数を入れる。配列を空にするとマウント時、アンマウント時のみ。
+- ReactではDOMの直接操作はNG（今回はReact管轄街のBodyに変更を加えるため）。代わりにuseRefを使う。
+
+<br>
+
+## #11
+- useState
+  - カウンターを実装
+
+#### 補足
+- useStateを使わないで変数に再代入しようとしてもコンポーネントが再レンダリングがされないため、画面上の変数が切り替わらない。
+- stateを変更する関数の引数ではそのまま処理を書くのではなく、関数を書いてその中に処理を書く。そうすることで、前回の状態が取れる。
+
+<br>
+
+## #12
+- useEffectやuseCallbackの第二引数について
+  - カウンターを10までにする
+#### 補足
+- useEffectの第二引数の配列に何か入っている場合、return内の処理が先に実行され、次にreturnの上の処理が実行される。
+- useCallbackの第二引数の配列になにもないと、useCallbackの中は再生成されない。
+
+<br>
+
+## #13
+- useState
+  - input要素を実装
+    - text.lengthは5文字まで
+  - カウンターの表示切り替え
+
+#### 補足
+- inputタグでvalueを忘れないように。
+- trim関数で空白を排除できる
+- 条件分岐で要素を表示させないようにするにはnullを使う。
+
+<br>
+
+## #14
+- useStateで配列を扱う
+  - リスト表示と追加ボタンを実装
+    - 同じ値は追加できないよう制御
+- git addについて
+
+#### 補足
+- setState内の関数の引数はわかりやすいようにprev~にする。
+- arrayに対してpushなどの破壊的メソッドはNG。代わりにスプレッド構文を使用。
+- js(ts)においてミュータブルではなくイミュータブルな値を使う。新しい値を返さないと再レンダリングされない。
+- ステージングする際、同じファイル内でコミットを分けたいときは対象範囲を選択して右クリックで該当範囲だけステージング可能。
+<br>
+
+## #15
+- カスタムフックス
+  - カウンター、TODO機能、背景色をカスタムフックス化
+#### 補足
+- カスタムフックスはuseから始めるのはjs(ts)の通常の関数と区別するため。
+- UIと処理を分けたいときはカスタムフックスを使う。逆にUIと処理が常に一緒の場合はコンポーネント化。
+- hooksディレクトリは一般的に、componentsやpagesディレクトリと同じ階層に置く。
+- hookを呼び出すのはコンポーネント内のトップレベルのみ。
+- hookはReactのものなので、通常のjs(ts)関数内で呼び出すのはNG。
+
+<br>
+
+## #16
+- stateのリフトアップ
+  - ページ間での共通化(Nextjsの機能)
+    - _appに記述し、子に変数や関数を渡す。
+      - カウンター、リスト、背景色
+  - コンポーネント間での共通化(Reactの機能)
+    - 親コンポーネントでstateを定義し、各子コンポーネントに渡し、子はpropsで受け取る。
+      - 4つのリンクアイテム
+
+#### 補足
+- stateの共通化にはReduxやRecoilなどのライブラリもある。
+
+<br>
+
+## #17
+- useMemo
+  - aboutのcountを倍にする
+- useRouter
+  - ページ毎に背景色を変更
+- リファクタリング
+  - function宣言からアロー関数に変更
+  - 子コンポーネントで変数や関数をpropsで受け取る
+  - リスト追加のフックスでsomeをincludesに変更
+  - ヘッダーのリンクをmapで回す
+
+#### 補足
+- useMemoは関係している部分のみ変化した場合に関数を再生成する。
+- Reactのコンポーネント内において全ての状態はuseMemo、全ての関数にはuseCallbackを使うべき。（パフォーマンスや再生成させるべきかどうかなどを考える癖をつける）
+- ページが増えてくるとswitch文の方が便利
+- アロー関数の方がtypescriptなどで型定義が楽
+- 子コンポーネントでは変数や関数を直接受け取るのではなく、propsで受け取る方がわかりやすい。
