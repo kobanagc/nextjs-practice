@@ -14,7 +14,7 @@ export const useTodoList = () => {
 
   const handleAdd = useCallback(() => {
     setArray((prevArray: string[])=> {
-      if (prevArray.some(item => item === text)){ //someは配列の中に条件に当てはまるものがあるか探すメソッド
+      if (prevArray.includes(text)){ //some関数(配列の中に条件に当てはまるものがあるか探すメソッド)でも可。
         alert("同じ要素がすでに存在しています。")
         return prevArray
       }

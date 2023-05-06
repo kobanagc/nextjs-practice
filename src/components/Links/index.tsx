@@ -10,7 +10,7 @@ interface LinksProps {
   items: Item[];
 }
 
-export function Links({ items }: LinksProps) {
+const Links = ({ items }: LinksProps) => {
 
   return (
     <div className={styles.grid}>
@@ -35,3 +35,5 @@ export function Links({ items }: LinksProps) {
     </div>
   )
 }
+
+export default Links
